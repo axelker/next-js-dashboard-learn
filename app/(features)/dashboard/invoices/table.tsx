@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { UpdateInvoice, DeleteInvoice } from '@/app/_components/invoices/buttons';
-import InvoiceStatus from '@/app/_components/invoices/status';
+import { UpdateInvoice, DeleteInvoice } from '@/app/(features)/dashboard/invoices/buttons';
+import InvoiceStatus from '@/app/(features)/dashboard/invoices/status';
 import { formatDateToLocal, formatCurrency } from '@/app/(features)/_services/utils';
 import { fetchFilteredInvoices } from '@/app/(features)/_services/data';
 

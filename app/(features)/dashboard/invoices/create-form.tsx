@@ -1,4 +1,4 @@
-import { CustomerField } from '@/app/(features)/customers/_services/definitions';
+import { CustomerField } from '@/app/(features)/dashboard/_types/definitions';
 import Link from 'next/link';
 import {
   CheckIcon,
@@ -6,7 +6,7 @@ import {
   CurrencyDollarIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
-import { Button } from '@/app/(features)/_shared/button';
+import { Button } from '@/app/(features)/_shared/components/button';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   return (
