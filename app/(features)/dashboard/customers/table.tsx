@@ -4,7 +4,7 @@ import Search from '@/app/(features)/_shared/components/search';
 import {
   CustomersTableType,
   FormattedCustomersTable,
-} from '@/app/(features)/dashboard/customers/_services/definitions';
+} from '@/app/(features)/dashboard/_types/definitions';
 
 export default async function CustomersTable({
   customers,
