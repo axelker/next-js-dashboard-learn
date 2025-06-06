@@ -17,7 +17,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     notFound();
   }
 
-  const action = updateInvoice.bind(null, invoice.id);
+  const action = updateInvoice.bind(null,invoice.id);
   
   return (
     <main>
