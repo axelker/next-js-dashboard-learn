@@ -1,8 +1,9 @@
-import Form from '@/app/(features)/dashboard/invoices/edit-form';
+import Form from '@/app/(features)/dashboard/invoices/invoice-form';
 import Breadcrumbs from '@/app/(features)/dashboard/invoices/breadcrumbs';
 import { fetchCustomers,fetchInvoiceById } from '@/app/(features)/_services/data';
 import { notFound } from 'next/navigation';
- 
+import { updateInvoice } from '@/app/(features)/dashboard/invoices/_services/action';
+
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
   const id = params.id;
@@ -10,12 +11,14 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   const [customers,invoice] = await Promise.all([
       fetchCustomers(), 
       fetchInvoiceById(id)
-    ]);
+  ]);
 
-console.log(invoice)
   if (!invoice) {
     notFound();
   }
+
+  const action = updateInvoice.bind(null, invoice.id);
+  
   return (
     <main>
       <Breadcrumbs
@@ -28,7 +31,7 @@ console.log(invoice)
           },
         ]}
       />
-      <Form invoice={invoice} customers={customers} />
+      <Form invoice={invoice} customers={customers} action={action}/>
     </main>
   );
 }

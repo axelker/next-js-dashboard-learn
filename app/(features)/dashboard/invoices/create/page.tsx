@@ -1,10 +1,11 @@
-import Form from '@/app/(features)/dashboard/invoices/create-form';
+import Form from '@/app/(features)/dashboard/invoices/invoice-form';
 import { fetchCustomers } from '@/app/(features)/_services/data';
 import Breadcrumbs from '@/app/(features)/dashboard/invoices/breadcrumbs';
+import { createInvoice } from '@/app/(features)/dashboard/invoices/_services/action';
 
 export default async function Page () {
     const customers = await fetchCustomers();
-     return (
+    return (
     <main>
       <Breadcrumbs
         breadcrumbs={[
@@ -16,7 +17,7 @@ export default async function Page () {
           },
         ]}
       />
-      <Form customers={customers} />
+      <Form customers={customers} action={createInvoice}/>
     </main>
   );
 }

@@ -2,7 +2,7 @@ import postgres from 'postgres';
 import {
   CustomerField,
   CustomersTableType,
-  InvoiceForm,
+  InvoiceFormType,
   InvoicesTable,
   LatestInvoiceRaw,
   Revenue,
@@ -144,7 +144,7 @@ export async function fetchInvoicesPages(query: string) {
 
 export async function fetchInvoiceById(id: string) {
   try {
-    const data = await sql<InvoiceForm[]>`
+    const data = await sql<InvoiceFormType[]>`
       SELECT
         invoices.id,
         invoices.customer_id,
