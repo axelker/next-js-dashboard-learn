@@ -16,7 +16,11 @@ export default function Search({ placeholder }: { placeholder: string }) {
     //Init with the url parameters
     const params = new URLSearchParams(searchParams);
     params.set('page', '1');
-    search ? params.set('query',search) : params.delete('query');
+    if (search) {
+      params.set('query',search)
+    } else {
+      params.delete('query');
+    }
     router.replace(`${pathname}?${params.toString()}`)
   },300)
 
@@ -38,4 +42,3 @@ export default function Search({ placeholder }: { placeholder: string }) {
     </div>
   );
 }
-2
