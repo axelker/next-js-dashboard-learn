@@ -2,7 +2,6 @@
 // https://nextjs.org/learn/dashboard-app/fetching-data
 const users = [
   {
-    id: '410544b2-4001-4271-9855-fec4b6a6442a',
     name: 'User',
     email: 'user@nextmail.com',
     password: '123456',
@@ -35,13 +34,13 @@ const customers = [
     image_url: '/customers/michael-novotny.png',
   },
   {
-    id: 'CC27C14A-0ACF-4F4A-A6C9-D45682C144B9',
+    id: 'cc27c14a-0acf-4f4a-a6c9-d45682c144b9',
     name: 'Amy Burns',
     email: 'amy@burns.com',
     image_url: '/customers/amy-burns.png',
   },
   {
-    id: '13D07535-C59E-4157-A011-F8D2EF4E0CBB',
+    id: '13d07535-c59e-4157-a011-f8d2ef4e0cbb',
     name: 'Balazs Orban',
     email: 'balazs@orban.com',
     image_url: '/customers/balazs-orban.png',

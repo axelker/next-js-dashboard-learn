@@ -2,13 +2,12 @@
 'use server';
 //Lib for valdating form
 import { z } from 'zod';
+import { prisma } from '@/app/lib/prisma-client';
 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import postgres from 'postgres';
 
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 
 //Form schema used zod for validation and error message.
@@ -68,10 +67,14 @@ export async function createInvoice(_prevState: State,formData: FormData): Promi
     const amountInCents = amount * 100;
     const date = new Date().toISOString().split('T')[0];
     try {
-      await sql`
-      INSERT INTO invoices (customer_id, amount, status, date)
-      VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
-      `;
+      await prisma.invoice.create({
+        data: {
+          customer_id:customerId,
+          amount: amountInCents,
+          status:status,
+          date:date
+        }
+      });
     } catch (error) {
       return {
         message: 'Database Error: Failed to Create Invoice.',
@@ -108,11 +111,14 @@ export async function updateInvoice(id: string,
   const amountInCents = amount * 100;
  
   try {
-    await sql`
-    UPDATE invoices
-    SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
-    WHERE id = ${id}
-  `;
+    await prisma.invoice.update({
+      where: { id },
+      data: {
+        customer_id: customerId,
+        amount: amountInCents,
+        status: status,
+      },
+    });
   } catch (error) {
       return {
         message: 'Database Error: Failed to Update Invoice.',
@@ -127,7 +133,9 @@ export async function updateInvoice(id: string,
 
 export async function deleteInvoice(id: string) {
   try {
-    await sql`DELETE FROM invoices WHERE id = ${id}`;
+    await prisma.invoice.delete({
+      where: { id }
+    });
   } catch (error) {
     console.log(error)
   }
