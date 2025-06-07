@@ -1,7 +1,6 @@
+import { customers, invoices, revenue, users } from './seed-data';
 import { prisma } from '@/app/lib/prisma-client';
 import bcrypt from 'bcrypt';
-import { customers, invoices, revenue, users } from '@/app/(features)/_services/placeholder-data';
-
 
 async function seedUsers() {
   for (const user of users) {
@@ -55,19 +54,21 @@ async function seedRevenue() {
   }
 }
 
-export async function GET() {
-  try {
-    await Promise.all([
-      seedUsers(),
-      seedCustomers(),
-      seedInvoices(),
-      seedRevenue()
-    ])
-    return Response.json({ message: '✅ Database seeded successfully' });
-  } catch (error) {
-    console.error(error)
-    return Response.json({ error: 'Seeding failed' }, { status: 500 });
-  } finally {
-    await prisma.$disconnect();
-  }
+async function main() {
+  await seedUsers();
+  await seedCustomers();
+  await seedInvoices();
+  await seedRevenue();
 }
+
+main()
+  .then(() => {
+    console.log('✅ Database seeded successfully');
+  })
+  .catch((e) => {
+    console.error('Error while seeding:', e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });

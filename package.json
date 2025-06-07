@@ -5,7 +5,10 @@
     "dev": "next dev --turbopack",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "prisma:generate": "prisma generate",
+    "prisma:reset":"prisma migrate reset",
+    "prisma:seed": "prisma db seed"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -32,12 +35,16 @@
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
     "eslint": "^9",
-    "eslint-config-next": "15.3.3"
+    "eslint-config-next": "15.3.3",
+    "tsx": "^4.19.4"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "bcrypt",
       "sharp"
     ]
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   }
 }
