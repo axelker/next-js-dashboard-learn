@@ -10,13 +10,13 @@ datasource db {
 }
 
 model Customer {
-  id        String @id @default(uuid()) @db.Uuid
-  name      String @db.VarChar(255)
-  email     String @db.VarChar(255)
-  image_url String @db.VarChar(255)
+  id        String    @id @default(uuid()) @db.Uuid
+  name      String    @db.VarChar(255)
+  email     String    @db.VarChar(255)
+  image_url String    @db.VarChar(255)
   invoices  Invoice[]
-  @@map("customer")
 
+  @@map("customer")
 }
 
 model Invoice {
@@ -25,31 +25,30 @@ model Invoice {
   amount      Int
   status      String   @db.VarChar(255)
   date        DateTime @db.Date
-  customer    Customer  @relation(fields: [customer_id], references: [id])
-  @@map("invoice")
+  customer    Customer @relation(fields: [customer_id], references: [id])
 
+  @@map("invoice")
 }
 
 model Revenue {
   month   String @unique @db.VarChar(4)
   revenue Int
-  @@map("revenue")
 
+  @@map("revenue")
 }
 
 model User {
-  id            String    @id @default(uuid())
-  email         String    @unique
-  password      String
-  name          String?
-  createdAt     DateTime  @default(now())
+  id            String    @id
+  name          String
+  email         String
   emailVerified Boolean
   image         String?
+  createdAt     DateTime
   updatedAt     DateTime
-  role          String?
   sessions      Session[]
   accounts      Account[]
 
+  @@unique([email])
   @@map("user")
 }
 

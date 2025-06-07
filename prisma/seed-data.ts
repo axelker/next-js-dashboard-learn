@@ -1,10 +1,4 @@
-const users = [
-  {
-    name: 'User',
-    email: 'user@nextmail.com',
-    password: '123456',
-  },
-];
+
 
 const customers = [
   {
@@ -141,4 +135,4 @@ const revenue = [
   { month: 'Dec', revenue: 4800 },
 ];
 
-export { users, customers, invoices, revenue };
+export { customers, invoices, revenue };

@@ -1,23 +1,5 @@
-import { customers, invoices, revenue, users } from './seed-data';
-import { prisma } from '@/app/lib/prisma-client';
-import bcrypt from 'bcrypt';
-
-async function seedUsers() {
-  for (const user of users) {
-    const hashedPassword = await bcrypt.hash(user.password, 10);
-
-    await prisma.user.create({
-      data: {
-        name: user.name,
-        email: user.email,
-        emailVerified:true,
-        password: hashedPassword,
-        createdAt: new Date(),
-        updatedAt:new Date()
-      },
-    });
-  }
-}
+import { customers, invoices, revenue } from './seed-data';
+import { prisma } from '@/lib/prisma-client';
 
 async function seedCustomers() {
   for (const customer of customers) {
@@ -55,7 +37,6 @@ async function seedRevenue() {
 }
 
 async function main() {
-  await seedUsers();
   await seedCustomers();
   await seedInvoices();
   await seedRevenue();
