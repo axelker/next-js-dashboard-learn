@@ -1,4 +1,4 @@
-import { prisma } from '@/app/lib/prisma-client';
+import { prisma } from '@/lib/prisma-client';
 
 async function listInvoices() {
  const data = await prisma.invoice.findMany({

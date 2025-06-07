@@ -1,4 +1,4 @@
-import { prisma } from '@/app/lib/prisma-client';
+import { prisma } from '@/lib/prisma-client';
 import {
   CustomersTableType,
 } from '@/app/(features)/dashboard/_types/definitions';
