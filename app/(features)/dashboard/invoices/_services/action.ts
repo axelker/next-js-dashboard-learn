@@ -2,7 +2,7 @@
 'use server';
 //Lib for valdating form
 import { z } from 'zod';
-import { prisma } from '@/app/lib/prisma-client';
+import { prisma } from '@/lib/prisma-client';
 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
@@ -78,6 +78,11 @@ export async function createInvoice(_prevState: State,formData: FormData): Promi
     } catch (error) {
       return {
         message: 'Database Error: Failed to Create Invoice.',
+         values: {
+          customerId: formData.get('customerId')?.toString() ?? '',
+          amount: formData.get('amount')?.toString() ?? '',
+          status: formData.get('status')?.toString() ?? '',
+        }
       };
     }
 
@@ -122,6 +127,11 @@ export async function updateInvoice(id: string,
   } catch (error) {
       return {
         message: 'Database Error: Failed to Update Invoice.',
+         values: {
+          customerId: formData.get('customerId')?.toString() ?? '',
+          amount: formData.get('amount')?.toString() ?? '',
+          status: formData.get('status')?.toString() ?? '',
+        }
       };
   }
 
