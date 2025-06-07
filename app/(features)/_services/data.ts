@@ -5,7 +5,7 @@ import {
 import { formatCurrency } from './utils';
 import postgres from 'postgres';
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+const sql = postgres(process.env.POSTGRES_URL!);
 
 export async function fetchRevenue() {
   try {
@@ -208,20 +208,20 @@ export async function fetchFilteredCustomers(query: string) {
   try {
     const data = await sql<CustomersTableType[]>`
 		SELECT
-		  customers.id,
-		  customers.name,
-		  customers.email,
-		  customers.image_url,
-		  COUNT(invoices.id) AS total_invoices,
-		  SUM(CASE WHEN invoices.status = 'pending' THEN invoices.amount ELSE 0 END) AS total_pending,
-		  SUM(CASE WHEN invoices.status = 'paid' THEN invoices.amount ELSE 0 END) AS total_paid
-		FROM customers
-		LEFT JOIN invoices ON customers.id = invoices.customer_id
+		  customer.id,
+		  customer.name,
+		  customer.email,
+		  customer.image_url,
+		  COUNT(invoice.id) AS total_invoices,
+		  SUM(CASE WHEN invoice.status = 'pending' THEN invoice.amount ELSE 0 END) AS total_pending,
+		  SUM(CASE WHEN invoice.status = 'paid' THEN invoice.amount ELSE 0 END) AS total_paid
+		FROM customer
+		LEFT JOIN invoice ON customer.id = invoice.customer_id
 		WHERE
-		  customers.name ILIKE ${`%${query}%`} OR
-        customers.email ILIKE ${`%${query}%`}
-		GROUP BY customers.id, customers.name, customers.email, customers.image_url
-		ORDER BY customers.name ASC
+		  customer.name ILIKE ${`%${query}%`} OR
+        customer.email ILIKE ${`%${query}%`}
+		GROUP BY customer.id, customer.name, customer.email, customer.image_url
+		ORDER BY customer.name ASC
 	  `;
 
     const customers = data.map((customer) => ({
