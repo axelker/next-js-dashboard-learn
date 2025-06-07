@@ -9,7 +9,7 @@ import { Button } from './button';
 import { sigIn } from '@/app/(features)/(auth)/_services/action';
 import { useActionState, useEffect } from 'react';
 import { State } from '@/app/(features)/(auth)/_types/auth-form-state.type';
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 import { Loader2 } from 'lucide-react';
 
 export default function LoginForm() {
@@ -31,7 +31,7 @@ export default function LoginForm() {
   
   return (
     <>
-    <Toaster position="top-right" ></Toaster>
+
     <form action={formAction} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
         <h1 className={`${lusitana.className} mb-3 text-2xl`}>
