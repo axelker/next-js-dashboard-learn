@@ -17,7 +17,6 @@ export async function sigIn(
     if (!validatedFields.success) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
-            message: 'Missing Fields. Failed to authenticate.',
             values: {
                 email: formData.get('email')?.toString() ?? '',
                 password: formData.get('password')?.toString() ?? '',
@@ -61,9 +60,9 @@ export async function sigUp(
     });
 
     if (!validatedFields.success) {
+        console.error("test")
         return {
             errors: validatedFields.error.flatten().fieldErrors,
-            message: 'Missing Fields. Failed to sign up.',
             values: {
                 name: formData.get('email')?.toString() ?? '',
                 email: formData.get('email')?.toString() ?? '',
@@ -78,7 +77,7 @@ export async function sigUp(
         body:{
             name:name ?? '',
             email:email,
-            password:password
+            password:password,
         }
        })
     } catch (error:unknown) {
@@ -96,5 +95,5 @@ export async function sigUp(
             }
         };
     }
-    redirect('/dashboard');
+    redirect('/login');
 }

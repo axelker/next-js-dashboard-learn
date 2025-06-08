@@ -11,6 +11,7 @@ import { useActionState, useEffect } from 'react';
 import { State } from '@/app/(features)/(auth)/_types/auth-form-state.type';
 import { toast } from "sonner"
 import { Loader2 } from 'lucide-react';
+import Link from "next/link";
 
 export default function LoginForm() {
 
@@ -112,6 +113,12 @@ export default function LoginForm() {
             </>
           )}
         </Button>
+        <div className="mt-4 text-center text-sm">
+          Create an account ?{" "}
+          <Link href="/signup" className="text-blue-600 hover:underline">
+            Sign Up
+          </Link>
+        </div>
       </div>
     </form>
     </>
