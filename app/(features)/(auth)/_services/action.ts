@@ -33,9 +33,14 @@ export async function sigIn(
             password:password
         }
        })
-    } catch (error:any) {
+    } catch (error:unknown) {
+        console.error(error);
+        let message = 'Unknown error occurred during sign-up';
+        if (error instanceof Error) {
+            message = error.message;
+        }
         return {
-            message: `${error.message}`,
+            message: `${message}`,
             values: {
                 email: formData.get('email')?.toString() ?? '',
                 password: formData.get('password')?.toString() ?? '',
@@ -76,9 +81,14 @@ export async function sigUp(
             password:password
         }
        })
-    } catch (error:any) {
+    } catch (error:unknown) {
+        console.error(error);
+        let message = 'Unknown error occurred during sign-up';
+        if (error instanceof Error) {
+            message = error.message;
+        }
         return {
-            message: `${error.message}`,
+            message: `${message}`,
             values: {
                 name: formData.get('email')?.toString() ?? '',
                 email: formData.get('email')?.toString() ?? '',

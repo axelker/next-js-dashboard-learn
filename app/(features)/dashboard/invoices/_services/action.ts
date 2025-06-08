@@ -76,8 +76,9 @@ export async function createInvoice(_prevState: State,formData: FormData): Promi
         }
       });
     } catch (error) {
+      console.error(error);
       return {
-        message: 'Database Error: Failed to Create Invoice.',
+        message: 'Error: Failed to Create Invoice.',
          values: {
           customerId: formData.get('customerId')?.toString() ?? '',
           amount: formData.get('amount')?.toString() ?? '',
@@ -124,9 +125,10 @@ export async function updateInvoice(id: string,
         status: status,
       },
     });
-  } catch (error) {
+  } catch (error:unknown) {
+    console.error(error);
       return {
-        message: 'Database Error: Failed to Update Invoice.',
+        message: ' Error: Failed to Update Invoice.',
          values: {
           customerId: formData.get('customerId')?.toString() ?? '',
           amount: formData.get('amount')?.toString() ?? '',

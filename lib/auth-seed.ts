@@ -16,14 +16,14 @@ async function main() {
             await auth.api.signUpEmail({
                 body: {
                     email: user.email,
-                    password: String(user.password),
+                    password: user.password,
                     name: user.name,
                     callbackURL: "",
                 },
             });
         }
-    } catch (error: any) {
-        console.error("❌ Erreur to create user :", error);
+    } catch (error: unknown) {
+        console.error("❌ Error to create user :", error);
         return;
     }
 

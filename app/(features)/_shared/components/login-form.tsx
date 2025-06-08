@@ -27,7 +27,7 @@ export default function LoginForm() {
       toast.error( state.message);
       state.message = undefined;
     }
-  }, [state?.message]);
+  }, [state]);
   
   return (
     <>

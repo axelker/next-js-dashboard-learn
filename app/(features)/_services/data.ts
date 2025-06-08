@@ -48,7 +48,7 @@ export async function fetchLatestInvoices() {
 
 export async function fetchCardData() {
   try {
-    const [invoiceCount, customerCount, invoiceStatus] = await Promise.all([
+    const [invoiceCount, customerCount] = await Promise.all([
       prisma.invoice.count(),
       prisma.customer.count(),
       prisma.invoice.aggregate({

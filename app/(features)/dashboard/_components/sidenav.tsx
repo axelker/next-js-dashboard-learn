@@ -16,9 +16,9 @@ export default function SideNav() {
         onSuccess: () => {
           router.push("/login");
         },
-        onError: (err:any) => {
-          toast.error(err.message)
-        }
+       onError: ({ error }) => {
+					toast.error(error.message || "An error occurred");
+			 },
       },
     });
   }
