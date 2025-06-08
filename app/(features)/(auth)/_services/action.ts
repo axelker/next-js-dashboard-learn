@@ -64,7 +64,7 @@ export async function sigUp(
         return {
             errors: validatedFields.error.flatten().fieldErrors,
             values: {
-                name: formData.get('email')?.toString() ?? '',
+                name: formData.get('name')?.toString() ?? '',
                 email: formData.get('email')?.toString() ?? '',
                 password: formData.get('password')?.toString() ?? '',
             }
@@ -89,7 +89,7 @@ export async function sigUp(
         return {
             message: `${message}`,
             values: {
-                name: formData.get('email')?.toString() ?? '',
+                name: formData.get('name')?.toString() ?? '',
                 email: formData.get('email')?.toString() ?? '',
                 password: formData.get('password')?.toString() ?? '',
             }
