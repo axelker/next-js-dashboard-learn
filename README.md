@@ -1,15 +1,49 @@
-## Next.js App Router Course - Starter
+# Next.js Demo Dashboard App
 
-This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
+![App Screenshot](docs/dashboard.png)
 
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+This is a demo application based on the official **Next.js dashboard example**, extended with modern tooling and key features for a full-stack app.
 
-## Install
+## Features
+
+- **Next.js App Router** (app directory)
+- **Better Auth** for user authentication
+- **Prisma ORM** for database management
+- **PostgreSQL** as the relational database
+- Full **Sign Up / Login** flow
+- Responsive and accessible UI
+- Server Actions (`useActionState`) for form handling
+
+> ⚙️ Work in progress: Integration of **Google** and **GitHub OAuth login** via Better Auth is currently underway.
+
+---
+
+##  Getting Started
+
+### Install dependencies
+
+You can use either `pnpm` or `npm`:
+
 ```bash
 pnpm i
 ```
 
-## Run
+
+### Development server
 ```bash
 pnpm dev
+```
+
+## Configuration
+### Environment Variables
+Create a .env file in the root with the following varibles in the ``.env.sample```
+
+
+## Prisma ORM
+The Prisma schema is located in prisma/schema.prisma.
+
+To generate the Prisma client:
+
+```bash
+pnpm run prisma:generate
 ```
