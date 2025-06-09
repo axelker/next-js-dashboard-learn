@@ -10,7 +10,6 @@ import { toast } from 'sonner';
 export default function SideNav() {
   const router = useRouter()
   function onSignOut() {
-    console.log("sign out")
     authClient.signOut({
       fetchOptions: {
         onSuccess: () => {

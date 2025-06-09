@@ -33,7 +33,7 @@ export async function sigIn(
         }
        })
     } catch (error:unknown) {
-        console.error(error);
+        console.error(JSON.stringify(error));
         let message = 'Unknown error occurred during sign-up';
         if (error instanceof Error) {
             message = error.message;
@@ -60,7 +60,6 @@ export async function sigUp(
     });
 
     if (!validatedFields.success) {
-        console.error("test")
         return {
             errors: validatedFields.error.flatten().fieldErrors,
             values: {
@@ -81,7 +80,7 @@ export async function sigUp(
         }
        })
     } catch (error:unknown) {
-        console.error(error);
+        console.error(JSON.stringify(error));
         let message = 'Unknown error occurred during sign-up';
         if (error instanceof Error) {
             message = error.message;

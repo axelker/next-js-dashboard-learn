@@ -149,7 +149,7 @@ export async function deleteInvoice(id: string) {
       where: { id }
     });
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
   revalidatePath('/dashboard/invoices');
 }
