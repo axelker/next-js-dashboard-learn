@@ -5,7 +5,7 @@ const unauthenticatedRoutes: string [] = ['/login','/signup'];
 
 export async function middleware(request: NextRequest) {
 	const cookies = getSessionCookie(request);
-	const url = request.nextUrl;
+	const url = request.url;
 	const path = request.nextUrl.pathname;
 	if (!cookies) {
 		return NextResponse.redirect(new URL("/", url));
