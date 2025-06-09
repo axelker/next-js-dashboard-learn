@@ -26,11 +26,8 @@ export const auth = betterAuth({
     nextCookies(),
   ],
   secret: process.env.BETTER_AUTH_SECRET!,
-  baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
-  trustedOrigins: [
-    "http://localhost:3000",
-    process.env.NEXT_PUBLIC_BASE_URL || "",
-  ],
+  baseURL: process.env.BETTER_AUTH_URL!,
+  trustedOrigins: process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:3000"],
 });
 
 // Types for TypeScript
