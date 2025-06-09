@@ -4,6 +4,7 @@
 
 This is a demo application based on the official **Next.js dashboard example**, extended with modern tooling and key features for a full-stack app.
 
+[Demo](https://next-js-dashboard-learn-pied.vercel.app/signup)
 ## Features
 
 - **Next.js App Router** (app directory)
@@ -11,10 +12,10 @@ This is a demo application based on the official **Next.js dashboard example**, 
 - **Prisma ORM** for database management
 - **PostgreSQL** as the relational database
 - Full **Sign Up / Login** flow
+- **OAuth login** with **GitHub** and **Google**
 - Responsive and accessible UI
 - Server Actions (`useActionState`) for form handling
 
-> ⚙️ Work in progress: Integration of **Google** and **GitHub OAuth login** via Better Auth is currently underway.
 
 ---
 
