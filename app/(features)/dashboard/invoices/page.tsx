@@ -1,10 +1,10 @@
-import Pagination from '@/app/(features)/dashboard/invoices/pagination';
-import Search from '@/app/(features)/_shared/components/search';
-import Table from '@/app/(features)/dashboard/invoices/table';
-import { CreateInvoice } from '@/app/(features)/dashboard/invoices/buttons';
-import { lusitana } from '@/app/(features)/_shared/fonts';
-import { InvoicesTableSkeleton } from '@/app/(features)/_shared/components/skeletons';
-import { fetchInvoicesPages } from '@/app/(features)/_services/data';
+import Pagination from '@/app/(features)/dashboard/invoices/_components/pagination';
+import Search from '@/components/ui/search';
+import Table from '@/app/(features)/dashboard/invoices/_components/table';
+import { CreateInvoice } from '@/app/(features)/dashboard/invoices/_components/buttons';
+import { lusitana } from '@/app/fonts/fonts';
+import { InvoicesTableSkeleton } from '@/components/ui/skeletons';
+import { fetchInvoicesPages } from '@/app/(features)/dashboard/_services/data';
 import { Suspense } from 'react';
 
 

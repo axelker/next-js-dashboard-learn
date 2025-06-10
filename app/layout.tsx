@@ -1,6 +1,6 @@
-import '@/app/(features)/_shared/styles/global.css';
+import '@/app/global.css';
 
-import { inter } from '@/app/(features)/_shared/fonts';
+import { inter } from '@/app/fonts/fonts';
 import { Toaster } from 'sonner';
 import { Metadata } from 'next';
 

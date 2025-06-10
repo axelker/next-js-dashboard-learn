@@ -6,13 +6,13 @@ import {
   UserIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
-import { Button } from './button';
+import { Button } from '@/components/ui/button';
 import { useActionState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
 import { sigUp } from '@/app/(features)/(auth)/_services/action';
 import { State } from '@/app/(features)/(auth)/_types/auth-form-state.type';
-import { lusitana } from '@/app/(features)/_shared/fonts';
+import { lusitana } from '@/app/fonts/fonts';
 
 export default function SignupForm() {
   const initialState: State = {

@@ -8,9 +8,10 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { Button } from '@/app/(features)/_shared/components/button';
-import { useActionState } from 'react';
+import { Button } from '@/components/ui/button';
+import { useActionState, useEffect } from 'react';
 import { State } from '@/app/(features)/dashboard/invoices/_services/action';
+import { toast } from 'sonner';
 
 
 export default function InvoiceForm({
@@ -34,6 +35,13 @@ export default function InvoiceForm({
     : {},
   };
   const [state, formAction] = useActionState<State, FormData>(action, initialState);
+
+  useEffect(() => {
+    if (state?.message) {
+      toast.error(state.message);
+      state.message = undefined;
+    }
+  },[state])
   return (
     <form action={formAction}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">

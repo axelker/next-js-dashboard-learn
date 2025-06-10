@@ -1,9 +1,9 @@
-import Form from '@/app/(features)/dashboard/invoices/invoice-form';
-import Breadcrumbs from '@/app/(features)/dashboard/invoices/breadcrumbs';
-import { fetchCustomers,fetchInvoiceById } from '@/app/(features)/_services/data';
+import Form from '@/app/(features)/dashboard/invoices/_components/invoice-form';
+import Breadcrumbs from '@/app/(features)/dashboard/invoices/_components/breadcrumbs';
+import { fetchCustomers,fetchInvoiceById } from '@/app/(features)/dashboard/_services/data';
 import { notFound } from 'next/navigation';
 import { updateInvoice } from '@/app/(features)/dashboard/invoices/_services/action';
-import { InvoiceFormType } from '../../../_types/definitions';
+import { InvoiceFormType } from '@/app/(features)/dashboard/_types/definitions';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;

@@ -1,4 +1,4 @@
-import { fetchFilteredCustomers } from "@/app/(features)/_services/data"
+import { fetchFilteredCustomers } from "@/app/(features)/dashboard/_services/data"
 import CustomersTable from "./table";
 
 export default async function Page(props: {

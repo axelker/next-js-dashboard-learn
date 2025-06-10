@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import NavLinks from '@/app/(features)/dashboard/_components/nav-links';
-import AcmeLogo from '@/app/(features)/_shared/components/acme-logo';
+import AcmeLogo from '@/components/ui/acme-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';

@@ -1,6 +1,6 @@
-import Form from '@/app/(features)/dashboard/invoices/invoice-form';
-import { fetchCustomers } from '@/app/(features)/_services/data';
-import Breadcrumbs from '@/app/(features)/dashboard/invoices/breadcrumbs';
+import Form from '@/app/(features)/dashboard/invoices/_components/invoice-form';
+import { fetchCustomers } from '@/app/(features)/dashboard/_services/data';
+import Breadcrumbs from '@/app/(features)/dashboard/invoices/_components/breadcrumbs';
 import { createInvoice } from '@/app/(features)/dashboard/invoices/_services/action';
 
 export default async function Page () {
