@@ -2,7 +2,13 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "@/lib/prisma-client";
 import { nextCookies } from "better-auth/next-js";
+import { stripe } from "@better-auth/stripe"
+import { plans } from "@/lib/stripe-plan";
+import Stripe from "stripe"
 
+export const stripeClient = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: "2025-05-28.basil",
+})
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
@@ -23,7 +29,17 @@ export const auth = betterAuth({
     },
   },
   plugins:[
+    stripe({
+      subscription: {
+        enabled: true,
+        plans: plans
+      },
+      stripeClient,
+      stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET!,
+      createCustomerOnSignUp: true,
+    }),
     nextCookies(),
+
   ],
   secret: process.env.BETTER_AUTH_SECRET!,
   baseURL: process.env.BETTER_AUTH_URL!,
