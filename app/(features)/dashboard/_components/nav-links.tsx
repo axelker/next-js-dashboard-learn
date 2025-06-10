@@ -4,6 +4,7 @@ import {
   UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
+  CreditCardIcon
 } from '@heroicons/react/24/outline';
 
 
@@ -25,6 +26,7 @@ const links = [
     icon: DocumentDuplicateIcon,
   },
   { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
+  { name: 'Subscriptions', href: '/dashboard/subscriptions',icon: CreditCardIcon}
 ];
 
 
