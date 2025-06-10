@@ -65,7 +65,7 @@ export async function createInvoice(_prevState: State,formData: FormData): Promi
     const { customerId, amount, status } = validatedFields.data;
 
     const amountInCents = amount * 100;
-    const date = new Date().toISOString().split('T')[0];
+    const date = new Date();
     try {
       await prisma.invoice.create({
         data: {
