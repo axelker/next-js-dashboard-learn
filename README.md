@@ -13,6 +13,7 @@ This is a demo application based on the official **Next.js dashboard example**, 
 - **PostgreSQL** as the relational database
 - Full **Sign Up / Login** flow
 - **OAuth login** with **GitHub** and **Google**
+- **Stripe integration** for paid **subscriptions**
 - Responsive and accessible UI
 - Server Actions (`useActionState`) for form handling
 
