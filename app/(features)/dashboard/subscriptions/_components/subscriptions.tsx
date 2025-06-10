@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 import { plans } from '@/lib/stripe-plan';
 import { authClient } from '@/lib/auth-client';
 import { Subscription } from '@better-auth/stripe';
-import { formatDateToLocal, formatCurrency } from '@/app/(features)/dashboard/_services/utils';
+import { formatDateToLocal } from '@/app/(features)/dashboard/_services/utils';
 
 export default function Subscriptions({ activeSub }: { activeSub: Subscription | undefined }) {
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
