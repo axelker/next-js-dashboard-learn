@@ -15,7 +15,6 @@ export default function UpdateButton({
 }) {
 	const router = useRouter();
 	const [isPending, setIsPending] = useState(false);
-
 	const handleSubUpdate = async () => {
 		try {
 			setIsPending(true);
@@ -24,19 +23,18 @@ export default function UpdateButton({
 				toast.success(result.message || "Subscription updated successfully");
 				setTimeout(() => {
 					router.refresh();
-				}, 3000);
+				}, 2000);
 			} else {
 				toast.error(result.message || "Failed to update subscription");
 			}
 		} catch (err) {
-			console.log(err);
             toast.error("An unexpected error occurred");
 		} finally {
 			setIsPending(false);
 		}
 	};
 	return (
-        <Button onClick={handleSubUpdate} disabled={isPending}>
+        <Button onClick={handleSubUpdate} disabled={isPending }>
             {isPending ? "Loading..." : "Switch to this plan"}
         </Button>
 	);
