@@ -4,6 +4,7 @@ import { PasswordForm } from "@/app/(features)/dashboard/account/_components/pas
 import { EmailForm } from "@/app/(features)/dashboard/account/_components/email-form";
 import { getActiveSubscription } from "@/app/(features)/dashboard/subscriptions/_actions/sub";
 import SubscriptionInfo from "@/app/(features)/dashboard/account/_components/subscription-info";
+import { prisma } from '@/lib/prisma-client';
 
 export default async function AccountPage() {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -12,6 +13,17 @@ export default async function AccountPage() {
   if (!session) {
     return null;
   }
+
+  // Get the user's account to check the provider
+  const account = await prisma.account.findFirst({
+    where: {
+      userId: session.user.id
+    },
+    select: {
+      providerId: true
+    }
+  });
+  const isExternalProvider:boolean = account?.providerId !== 'credential';
 
   return (
     <main className="flex min-h-screen flex-col p-6">
@@ -25,12 +37,14 @@ export default async function AccountPage() {
                 <span className="text-gray-600">Name:</span>
                 <span className="font-medium">{session.user.name || "Not set"}</span>
               </div>
-              <EmailForm currentEmail={session.user.email} />
+              <EmailForm 
+                currentEmail={session.user.email} 
+                isExternalProvider={isExternalProvider}
+              />
             </div>
-           
           </div>
           <div>
-            <PasswordForm />
+            {!isExternalProvider && <PasswordForm />}
           </div>
           {subscription && <SubscriptionInfo subscription={subscription} />}
         </div>

@@ -14,6 +14,19 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql", // or "mysql", "sqlit", ...etc
   }),
+  user: {
+        changeEmail: {
+            enabled: true,
+            //For verication email
+            // sendChangeEmailVerification: async ({ user, newEmail, url, token }, request) => {
+            //     await sendEmail({
+            //         to: user.email, // verification email must be sent to the current user email to approve the change
+            //         subject: 'Approve email change',
+            //         text: `Click the link to approve the change: ${url}`
+            //     })
+            // }
+        }
+  },
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false, // Need to activate for real APP
