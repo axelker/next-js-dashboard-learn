@@ -19,6 +19,7 @@ export function PasswordForm() {
       await authClient.changePassword({
         currentPassword,
         newPassword,
+        revokeOtherSessions: true,
       });
       toast.success('Password updated successfully');
       setCurrentPassword('');
