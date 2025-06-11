@@ -23,7 +23,7 @@ export const plans: Plan[] = [
     },
     {
         id: 2,// custom field
-        name: "Pro +", // the name of the plan, it'll be automatically lower cased when stored in the database
+        name: "pro+", // the name of the plan, it'll be automatically lower cased when stored in the database
         priceId: "price_1RYbOtQaJIIVu8Tu1S72VbdG", // the price ID from stripe
         price: 49.99,
         limits: {

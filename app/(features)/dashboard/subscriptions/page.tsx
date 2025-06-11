@@ -13,7 +13,7 @@ export default async function Page() {
   return (
     <>
       <div className="w-full items-center">
-        <h1 className={`${lusitana.className} text-2xl`}>Subscription</h1>
+        <h1 className={`${lusitana.className} text-2xl`}>Subscriptions</h1>
         <Subscriptions activeSub={activeSub} />
       </div>
     </>
