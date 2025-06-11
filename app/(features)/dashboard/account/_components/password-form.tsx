@@ -14,21 +14,19 @@ export function PasswordForm() {
   const handlePasswordUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
-    try {
-      await authClient.changePassword({
-        currentPassword,
-        newPassword,
-        revokeOtherSessions: true,
-      });
-      toast.success('Password updated successfully');
-      setCurrentPassword('');
-      setNewPassword('');
-    } catch (error) {
-      toast.error('Failed to update password');
-    } finally {
-      setIsLoading(false);
+    const response = await authClient.changePassword({
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+      revokeOtherSessions: true,
+    });
+    setIsLoading(false);
+    if (response.error) {
+      toast.error(`Failed to update password : ${response.error.message}`);
+      return;
     }
+    toast.success('Password updated successfully');
+    setCurrentPassword('');
+    setNewPassword('');
   };
 
   return (
@@ -64,14 +62,17 @@ export function PasswordForm() {
             required
           />
         </div>
-        <Button 
-          type="submit" 
-          disabled={isLoading}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-        >
-          {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-          Update Password
-        </Button>
+        <div className="flex justify-end">
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="bg-blue-600 hover:bg-blue-700 text-white"
+          >
+            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+            Update Password
+          </Button>
+        </div>
+
       </div>
     </form>
   );
