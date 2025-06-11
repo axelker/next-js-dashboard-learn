@@ -14,13 +14,13 @@
     "seed:user": "tsx lib/auth-seed.ts"
   },
   "dependencies": {
-    "@better-auth/stripe": "^1.2.8",
+    "@better-auth/stripe": "^1.2.9",
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.9.0",
     "@tailwindcss/forms": "^0.5.10",
     "autoprefixer": "10.4.20",
     "bcrypt": "^5.1.1",
-    "better-auth": "^1.2.8",
+    "better-auth": "^1.2.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.513.0",

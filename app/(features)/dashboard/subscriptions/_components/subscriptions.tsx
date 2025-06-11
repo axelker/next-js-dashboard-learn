@@ -1,12 +1,12 @@
 
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { plans } from '@/lib/stripe-plan';
-import { Subscription } from '@better-auth/stripe';
+import { Subscription } from "@better-auth/stripe";
 import { formatDateToLocal } from '@/app/(features)/dashboard/_services/utils';
 import CreateButton from './create-button';
 import UpdateButton from './update-button';
 
-export default function Subscriptions({ activeSub }: { activeSub: Subscription | undefined }) {
+export default function Subscriptions({ activeSub }: { activeSub: Subscription | null }) {
 
   return (
     <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -27,7 +27,7 @@ export default function Subscriptions({ activeSub }: { activeSub: Subscription |
               </ul>
             </CardContent>
             <CardFooter className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              {activeSub?.plan === plan.name ? (
+              {activeSub?.priceId === plan.priceId ? (
 								<>
 									{activeSub.cancelAtPeriodEnd ? (
 										<p className="text-red-400 text-xs">
