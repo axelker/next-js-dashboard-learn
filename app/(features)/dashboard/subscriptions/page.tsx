@@ -1,6 +1,4 @@
 import { lusitana } from "@/app/fonts/fonts";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 import Subscriptions from "@/app/(features)/dashboard/subscriptions/_components/subscriptions";
 import { getActiveSubscription } from "@/app/(features)/dashboard/subscriptions/_actions/sub";
 import { toast } from "sonner";

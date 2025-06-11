@@ -43,7 +43,7 @@ export default function SubscriptionInfo({ subscription }: SubscriptionInfoProps
           </span>
         </div>
       </div>
-      <div className="mt-6">
+      <div className="mt-6 flex justify-end">
         <CancelButton isAlreadyCanceling={!!isCanceled} />
       </div>
     </div>

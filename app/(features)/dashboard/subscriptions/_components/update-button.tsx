@@ -28,6 +28,7 @@ export default function UpdateButton({
 				toast.error(result.message || "Failed to update subscription");
 			}
 		} catch (err) {
+            console.error(err)
             toast.error("An unexpected error occurred");
 		} finally {
 			setIsPending(false);
