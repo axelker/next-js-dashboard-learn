@@ -94,5 +94,5 @@ export async function sigUp(
             }
         };
     }
-    redirect('/login');
+    redirect('/dashboard');
 }
