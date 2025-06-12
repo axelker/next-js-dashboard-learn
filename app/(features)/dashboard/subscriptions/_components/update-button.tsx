@@ -17,8 +17,8 @@ export default function UpdateButton({
 			setIsPending(true);
 			const { error } = await authClient.subscription.upgrade({
 				plan: plan.name,
-				successUrl: '/dashboard/subscription',
-				cancelUrl: '/dashboard/subscription',
+				successUrl: '/dashboard/subscriptions',
+				cancelUrl: '/dashboard/subscriptions',
 				subscriptionId:subId
 			});
 			setIsPending(false);
