@@ -2,9 +2,8 @@ import { createAuthClient } from "better-auth/react"
 import { stripeClient } from "@better-auth/stripe/client"
 
 export const authClient = createAuthClient({
-    /** The base URL of the server (optional if you're using the same domain) 
-    baseURL: "http://localhost:3000" */
-
+   
+    baseURL: process.env.NEXT_PUBLIC_BASE_URL,
     plugins: [
         stripeClient({
             subscription: true //if you want to enable subscription management
