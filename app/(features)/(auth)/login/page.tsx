@@ -1,7 +1,6 @@
 import AcmeLogo from '@/components/ui/acme-logo';
 import LoginForm from '@/app/(features)/(auth)/login/_components/login-form';
-import { Suspense } from 'react';
- 
+
 export default function LoginPage() {
   return (
     <main className="flex items-center justify-center md:h-screen">
@@ -11,9 +10,7 @@ export default function LoginPage() {
             <AcmeLogo />
           </div>
         </div>
-        <Suspense>
-          <LoginForm />
-        </Suspense>
+        <LoginForm />
       </div>
     </main>
   );
