@@ -34,6 +34,7 @@ export async function getActiveSubscription(): Promise<{ status: boolean, messag
   }
 }
 
+// Can use for upgrade subscription by the server directly.
 export async function updateExistingSubscription(subId: string, switchToPriceId: string): Promise<{ status: boolean, message: string }> {
 
   const session = await auth.api.getSession({ headers: await headers() });
@@ -71,7 +72,6 @@ export async function updateExistingSubscription(subId: string, switchToPriceId:
       cancel_at_period_end: false,
       proration_behavior: "create_prorations"
     })
-
     return {
       status: true,
       message: "Subscription updated successfully!"

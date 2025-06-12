@@ -1,10 +1,9 @@
 "use client";
-import { updateExistingSubscription } from "@/app/(features)/dashboard/subscriptions/_actions/sub";
 import { Plan } from "@/lib/stripe-plan";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { authClient } from "@/lib/auth-client";
 
 export default function UpdateButton({
 	plan,
@@ -13,29 +12,20 @@ export default function UpdateButton({
 	plan: Plan;
 	subId: string;
 }) {
-	const router = useRouter();
 	const [isPending, setIsPending] = useState(false);
-	const handleSubUpdate = async () => {
-		try {
+	const handleSubscribe = async () => {
 			setIsPending(true);
-			const result = await updateExistingSubscription(subId, plan.priceId);
-			if (result.status) {
-				toast.success(result.message || "Subscription updated successfully");
-				setTimeout(() => {
-					router.refresh();
-				}, 2000);
-			} else {
-				toast.error(result.message || "Failed to update subscription");
-			}
-		} catch (err) {
-            console.error(err)
-            toast.error("An unexpected error occurred");
-		} finally {
+			const { error } = await authClient.subscription.upgrade({
+				plan: plan.name,
+				successUrl: '/dashboard/subscription',
+				cancelUrl: '/dashboard/subscription',
+				subscriptionId:subId
+			});
 			setIsPending(false);
-		}
-	};
+			if (error) toast.error(error.message);
+		};
 	return (
-        <Button onClick={handleSubUpdate} disabled={isPending }>
+        <Button onClick={handleSubscribe} disabled={isPending }>
             {isPending ? "Loading..." : "Switch to this plan"}
         </Button>
 	);
