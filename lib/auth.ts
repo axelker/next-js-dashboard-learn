@@ -17,7 +17,7 @@ export const auth = betterAuth({
   user: {
         changeEmail: {
             enabled: true,
-            //For verication email
+            //For update with verication email
             // sendChangeEmailVerification: async ({ user, newEmail, url, token }, request) => {
             //     await sendEmail({
             //         to: user.email, // verification email must be sent to the current user email to approve the change
@@ -27,9 +27,33 @@ export const auth = betterAuth({
             // }
         }
   },
+  //For email verification
+  // emailVerification: {
+	// 	async sendVerificationEmail({ user, url }) {
+	// 		const res = await resend.emails.send({
+	// 			from,
+	// 			to: to || user.email,
+	// 			subject: "Verify your email address",
+	// 			html: `<a href="${url}">Verify your email address</a>`,
+	// 		});
+	// 		console.log(res, user.email);
+	// 	},
+	// },
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false, // Need to activate for real APP
+    //Reset password by email
+    // async sendResetPassword({ user, url }) {
+		// 	await resend.emails.send({
+		// 		from,
+		// 		to: user.email,
+		// 		subject: "Reset your password",
+		// 		react: reactResetPasswordEmail({
+		// 			username: user.email,
+		// 			resetLink: url,
+		// 		}),
+		// 	});
+		// },
   },
   socialProviders: {
     google: {
