@@ -13,6 +13,7 @@ import { Loader2 } from 'lucide-react';
 import { sigUp } from '@/app/(features)/(auth)/_services/action';
 import { State } from '@/app/(features)/(auth)/_types/auth-form-state.type';
 import { lusitana } from '@/app/fonts/fonts';
+import { FormInput } from "@/components/ui/form-input";
 
 export default function SignupForm() {
   const initialState: State = {
@@ -36,71 +37,41 @@ export default function SignupForm() {
           Create your account
         </h1>
         <div className="w-full space-y-4">
-          {/* Name */}
-          <div>
-            <label className="block text-xs font-medium text-gray-900 mb-1" htmlFor="name">
-              Name
-            </label>
-            <div className="relative">
-              <input
-                className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Your name"
-                defaultValue={state?.values?.name}
-                disabled={isPending}
-              />
-              <UserIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
-            </div>
-            {state.errors?.name?.map((error: string) => (
-              <p className="text-sm text-red-500 mt-1" key={error}>{error}</p>
-            ))}
-          </div>
+          <FormInput
+            label="Name"
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            defaultValue={state?.values?.name}
+            disabled={isPending}
+            icon={<UserIcon className="h-[18px] w-[18px]" />}
+            error={state.errors?.name}
+          />
 
-          {/* Email */}
-          <div>
-            <label className="block text-xs font-medium text-gray-900 mb-1" htmlFor="email">
-              Email
-            </label>
-            <div className="relative">
-              <input
-                className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                defaultValue={state?.values?.email}
-                disabled={isPending}
-              />
-              <AtSymbolIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
-            </div>
-            {state.errors?.email?.map((error: string) => (
-              <p className="text-sm text-red-500 mt-1" key={error}>{error}</p>
-            ))}
-          </div>
+          <FormInput
+            label="Email"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Enter your email"
+            defaultValue={state?.values?.email}
+            disabled={isPending}
+            icon={<AtSymbolIcon className="h-[18px] w-[18px]" />}
+            error={state.errors?.email}
+          />
 
-          {/* Password */}
-          <div>
-            <label className="block text-xs font-medium text-gray-900 mb-1" htmlFor="password">
-              Password
-            </label>
-            <div className="relative">
-              <input
-                className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-                defaultValue={state?.values?.password}
-                disabled={isPending}
-              />
-              <KeyIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
-            </div>
-            {state.errors?.password?.map((error: string) => (
-              <p className="text-sm text-red-500 mt-1" key={error}>{error}</p>
-            ))}
-          </div>
+          <FormInput
+            label="Password"
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            defaultValue={state?.values?.password}
+            disabled={isPending}
+            icon={<KeyIcon className="h-[18px] w-[18px]" />}
+            error={state.errors?.password}
+          />
         </div>
 
         <Button disabled={isPending} className="mt-6 w-full flex items-center justify-center gap-2">
