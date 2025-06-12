@@ -93,11 +93,13 @@ export function EmailForm({ currentEmail: initialEmail, isExternalProvider }: Em
         disabled={isLoading}
         className="h-8 w-8 flex items-center justify-center"
       >
-        {isLoading ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
-        ) : (
-          <CheckIcon className="h-4 w-4" />
-        )}
+        <div className='m-auto'>
+          {isLoading ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <CheckIcon className="h-4 w-4" />
+          )}
+        </div>
       </Button>
       <Button
         type="button"
@@ -107,7 +109,9 @@ export function EmailForm({ currentEmail: initialEmail, isExternalProvider }: Em
         }}
         className="h-8 w-8 bg-red-500 hover:bg-red-600 flex items-center justify-center"
       >
-        <X className="h-4 w-4" />
+        <div className='m-auto'>
+            <X className="h-4 w-4" />
+        </div>
       </Button>
     </form>
   );
