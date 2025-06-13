@@ -1,6 +1,5 @@
 {
   "private": true,
-  
   "scripts": {
     "build": "prisma generate && next build",
     "dev": "next dev --turbopack",
@@ -11,7 +10,10 @@
     "prisma:generate": "prisma generate",
     "prisma:reset": "prisma migrate reset",
     "prisma:seed": "prisma db seed",
-    "seed:user": "tsx lib/auth-seed.ts"
+    "seed:user": "tsx lib/auth-seed.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@better-auth/stripe": "^1.2.9",
@@ -41,12 +43,18 @@
     "zod": "^3.25.17"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/bcrypt": "^5.0.2",
+    "@types/jest": "^29.5.14",
     "@types/node": "22.10.7",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
     "tsx": "^4.19.4"
   },
   "pnpm": {
